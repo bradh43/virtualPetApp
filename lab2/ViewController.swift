@@ -41,15 +41,12 @@ class ViewController: UIViewController {
         pets.append(bird)
         bunny = Pet(name: "Bugs", petType: .bunny, imageName: "bunny", color: .magenta)
         pets.append(bunny)
-        cat = Pet(name: "Felix", petType: .cat, imageName: "cat", color: .blue)
+        cat = Pet(name: "Felix", petType: .cat, imageName: "cat", color: UIColor(red: 135/255, green: 205/255, blue: 250/255, alpha: 1))
         pets.append(cat)
         dog = Pet(name: "Buddy", petType: .dog, imageName: "dog", color: .red)
         pets.append(dog)
         fish = Pet(name: "Nemo", petType: .fish, imageName: "fish", color: .purple)
         pets.append(fish)
-        
-        
-        
         //default the current pet to bird when app loads by setting a pointer to the bird
         currentPet = bird
     
@@ -68,12 +65,15 @@ class ViewController: UIViewController {
         foodDisplayView.color = currentPet.color
         foodDisplayView.value = CGFloat(Double(currentPet.foodLevel)/10.0)
         foodLevelLabel.text = "fed: \(currentPet.foodLevel)"
+        petNameLabel.text = currentPet.name
         createPetView()
     }
     
+    //function to create the bottom buttons that are used to select the pet
     func createBottomButtonBar(){
+        //create an array of pet buttons
         var bottomButtons:[UIButton] = Array()
-
+        //for each pet create a button and view so it can be added to the stack view
         for pet in pets {
             let tempButton = createPetButton(name: pet.imageName.capitalized)
             let tempView = UIView()
@@ -81,26 +81,28 @@ class ViewController: UIViewController {
             bottomButtons.append(tempButton)
             tempView.addSubview(tempButton)
             bottomButtonViews.append(tempView)
-            
         }
+        //add all the pet views created to the stack view
         bottomButtonStackView = UIStackView(arrangedSubviews: bottomButtonViews)
-
+        //settings for the stack view
         bottomButtonStackView.axis = .horizontal
         bottomButtonStackView.distribution = .fillEqually
         
-        
+        //add the stack view to the main view
         view.addSubview(bottomButtonStackView)
         
         //enable auto layout
         bottomButtonStackView.translatesAutoresizingMaskIntoConstraints = false
         
+        
+        //constraints for auto layout for the stack view with the buttons for selecting a pet
         NSLayoutConstraint.activate([
             bottomButtonStackView.heightAnchor.constraint(equalToConstant: 50),
             bottomButtonStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
             bottomButtonStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
             bottomButtonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding),
             ])
-        
+        //for each button set constraints to it respective view
         var i = 0
         for tempButton in bottomButtons {
             NSLayoutConstraint.activate([
@@ -113,12 +115,15 @@ class ViewController: UIViewController {
         }
     }
     
+    //function for creating a pet button that is used to switch the current pet
     private func createPetButton(name: String) -> UIButton{
         //let petButtonFrame = CGRect(x: 0, y: 0, width: 20, height: 15)
         let petButton = UIButton(type: .system)
         //petButton.frame = petButtonFrame
         petButton.setTitle(name, for: .normal)
         petButton.addTarget(self, action: #selector(changePet(_:)), for: UIControl.Event.touchDown)
+        //custom font
+        petButton.titleLabel?.font =  UIFont(name: "gameovercre", size: 15)
         return petButton
     }
 
@@ -129,59 +134,79 @@ class ViewController: UIViewController {
         return petView
     }()
     
+    //image button so pet can be clicked
     let petImageButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(makePetNoise(_:)), for: UIControl.Event.touchDown)
         return button
     }()
-
+    
+    //label for the pet name
+    let petNameLabel: UILabel = {
+        var frame = CGRect(x: 0, y: 0, width: 10, height: 10)
+        let label = UILabel(frame: frame)
+        label.text = "Nemo"
+        label.font = UIFont(name: "gameovercre", size: 17.0)
+        return label
+    }()
+    
+    //view for the happiness stats
     let happinessDisplayView: DisplayView = {
         let displayView = DisplayView()
         return displayView
     }()
     
+    //view for the food stats
     let foodDisplayView: DisplayView = {
         let displayView = DisplayView()
         return displayView
     }()
     
+    //happiness label
     let happinessLabel: UILabel = {
         var labelFrame = CGRect(x: 0, y: 0, width: 10, height: 10)
         let label = UILabel(frame: labelFrame)
         label.text = "Happiness"
+        label.font = UIFont(name: "gameovercre", size: 17.0)
         return label
     }()
-
+    
+    //label for the current level of happiness
     let happinessLevelLabel: UILabel = {
         var labelFrame = CGRect(x: 0, y: 0, width: 10, height: 10)
         let label = UILabel(frame: labelFrame)
         label.text = "played: 0"
         label.textColor = UIColor.gray
+        label.font = UIFont(name: "gameovercre", size: 17.0)
         return label
     }()
-
+    
+    //label for food
     let foodLabel: UILabel = {
         var labelFrame = CGRect(x: 0, y: 0, width: 10, height: 10)
         let label = UILabel(frame: labelFrame)
         label.text = "Food Level"
+        label.font = UIFont(name: "gameovercre", size: 17.0)
         return label
     }()
 
+    //label for the current level of food
     let foodLevelLabel: UILabel = {
         var labelFrame = CGRect(x: 0, y: 0, width: 10, height: 10)
         let label = UILabel(frame: labelFrame)
         label.text = "fed: 0"
         label.textColor = UIColor.gray
+        label.font = UIFont(name: "gameovercre", size: 17.0)
         return label
     }()
 
-    
     //closure for creating button to play with the pet
     let playButton : UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Play", for: .normal)
         button.backgroundColor = UIColor(white: 0.9, alpha: 1)
         button.addTarget(self, action: #selector(playPet(_:)), for: UIControl.Event.touchDown)
+        button.titleLabel?.font =  UIFont(name: "gameovercre", size: 17)
         return button
     }()
     
@@ -191,29 +216,37 @@ class ViewController: UIViewController {
         button.setTitle("Feed", for: .normal)
         button.backgroundColor = UIColor(white: 0.9, alpha: 1)
         button.addTarget(self, action: #selector(feedPet(_:)), for: UIControl.Event.touchDown)
+        button.titleLabel?.font =  UIFont(name: "gameovercre", size: 17)
         return button
     }()
     
+    //function to create the main pet view with image background color and pet name
     func createPetView(){
+        //change background color to current pet color
         petView.backgroundColor = currentPet.color
+        //add the pet view to the main view
         view.addSubview(petView)
+        //add the name of the pet to the pet view
+        petView.addSubview(petNameLabel)
         
         //enable auto layout
         petView.translatesAutoresizingMaskIntoConstraints = false
+        petNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        //auto layout constraints for the pet view
         NSLayoutConstraint.activate([
             //constrain the pet view to the top of the screen
             petView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-            //set the width of the image
             petView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
             petView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
-            //set the height of the image
             petView.bottomAnchor.constraint(equalTo: actionButtonStackView.topAnchor, constant: -padding)
             ])
         
+        //update the pet image to the current pet
         let petImage = UIImage(named: currentPet.imageName)
         petImageButton.setBackgroundImage(petImage, for: .normal)
-        
+        //add the pet image button to the main view
         view.addSubview(petImageButton)
+        
         //allow for auto layout
         petImageButton.translatesAutoresizingMaskIntoConstraints = false
         //center image horizontally in the pet view
@@ -224,6 +257,11 @@ class ViewController: UIViewController {
         petImageButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         //set the height of the image
         petImageButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        
+        //autolayout for the pet name
+        petNameLabel.bottomAnchor.constraint(equalTo: petImageButton.topAnchor, constant: -padding).isActive = true
+        petNameLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        petNameLabel.centerXAnchor.constraint(equalTo: petView.centerXAnchor, constant: 0).isActive = true
     }
     
     //function to create the action buttons that will play and feed the pet
@@ -268,6 +306,7 @@ class ViewController: UIViewController {
             ])
     }
     
+    //funtion to create the stats display for the food and happiness
     func createStatsDisplay(){
         happinessView.addSubview(happinessLabel)
         happinessView.addSubview(happinessLevelLabel)
@@ -278,21 +317,23 @@ class ViewController: UIViewController {
         happinessView.addSubview(happinessDisplayView)
         foodView.addSubview(foodDisplayView)
         
+        //add the happiness and food stats to the stack view
         statsStackView = UIStackView(arrangedSubviews: [happinessView, foodView])
-        
         statsStackView.distribution = .fillEqually
         
+        //depending on the device current orientation change the padding and the stack view axis
         if UIDevice.current.orientation.isLandscape {
             statsStackView.axis = .horizontal
             statsStackView.spacing = padding*4
-            
         } else {
             statsStackView.axis = .vertical
             statsStackView.spacing = padding
         }
         
+        //add the stats stack view to the main view
         view.addSubview(statsStackView)
         
+        //allow for auto layout
         statsStackView.translatesAutoresizingMaskIntoConstraints = false
         happinessDisplayView.translatesAutoresizingMaskIntoConstraints = false
         foodDisplayView.translatesAutoresizingMaskIntoConstraints = false
@@ -300,7 +341,7 @@ class ViewController: UIViewController {
         happinessLevelLabel.translatesAutoresizingMaskIntoConstraints = false
         foodLabel.translatesAutoresizingMaskIntoConstraints = false
         foodLevelLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+        //constraints for auto layout
         NSLayoutConstraint.activate([
             statsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
             statsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
@@ -346,12 +387,13 @@ class ViewController: UIViewController {
         }
     }
     
+    //function to unlock a hidden pet if the user beats the game
     func unlockHiddenPet(){
         bottomButtonStackView.subviews.forEach {
             $0.removeFromSuperview()
         }
         bottomButtonViews.removeAll()
-        scooby = Pet(name: "Scooby", petType: .scooby, imageName: "scooby", color: .black)
+        scooby = Pet(name: "Scooby", petType: .scooby, imageName: "scooby", color: UIColor(red: 138/255, green: 43/255, blue: 226/255, alpha: 1))
         pets.append(scooby)
         createBottomButtonBar()
     }

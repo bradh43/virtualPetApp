@@ -24,6 +24,7 @@
 		68D4A5CD2158842F00823D64 /* play.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 68D4A5CB2158842E00823D64 /* play.mp3 */; };
 		68D4A5CE2158842F00823D64 /* feed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 68D4A5CC2158842F00823D64 /* feed.mp3 */; };
 		68D4A5D12158974500823D64 /* scooby.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 68D4A5D02158974500823D64 /* scooby.mp3 */; };
+		68D4A5D82158AF3200823D64 /* gameovercre1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68D4A5D72158AF3200823D64 /* gameovercre1.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		68D4A5CB2158842E00823D64 /* play.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = play.mp3; sourceTree = "<group>"; };
 		68D4A5CC2158842F00823D64 /* feed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = feed.mp3; sourceTree = "<group>"; };
 		68D4A5D02158974500823D64 /* scooby.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scooby.mp3; sourceTree = "<group>"; };
+		68D4A5D72158AF3200823D64 /* gameovercre1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gameovercre1.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				68D4A5CF2158860B00823D64 /* audio */,
+				68D4A5D22158A82100823D64 /* fonts */,
 				68A42DFD21531FBB004DDA00 /* AppDelegate.swift */,
 				68A42DFF21531FBB004DDA00 /* ViewController.swift */,
 				68A42E0121531FBB004DDA00 /* Main.storyboard */,
@@ -161,6 +164,14 @@
 				68D4A5C12158412400823D64 /* fish.mp3 */,
 			);
 			path = audio;
+			sourceTree = "<group>";
+		};
+		68D4A5D22158A82100823D64 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				68D4A5D72158AF3200823D64 /* gameovercre1.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +287,7 @@
 				68D4A5C92158412500823D64 /* cat.mp3 in Resources */,
 				68D4A5CE2158842F00823D64 /* feed.mp3 in Resources */,
 				68A42E0321531FBB004DDA00 /* Main.storyboard in Resources */,
+				68D4A5D82158AF3200823D64 /* gameovercre1.ttf in Resources */,
 				68D4A5C82158412500823D64 /* bunny.mp3 in Resources */,
 				68D4A5CA2158412500823D64 /* dog.mp3 in Resources */,
 			);

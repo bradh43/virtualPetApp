@@ -7,12 +7,12 @@
 //
 
 import Foundation
+//import for color
 import UIKit
+//import for vibration
 import AudioToolbox
+//import for audio
 import AVFoundation
-
-
-
 
 class Pet {
     
@@ -25,7 +25,7 @@ class Pet {
     var color: UIColor
     var petAudioPlayer: AVAudioPlayer?
 
-    
+    //enum for types of pets
     enum PetType {
         case bird
         case bunny
@@ -43,6 +43,8 @@ class Pet {
             if(happinessLevel < 10) {
                 //increase the happiness of the pet, they love to be played with
                 happinessLevel += 1
+                
+                //make a noise if the animal is played with
                 petAudioPlayer = try? AVAudioPlayer(contentsOf: Bundle.main.url(forResource: "play", withExtension: "mp3")!)
                 petAudioPlayer?.prepareToPlay()
                 petAudioPlayer?.play()
@@ -50,6 +52,7 @@ class Pet {
             //playing requires fuel, lower food level
             foodLevel -= 1
         } else {
+            //vibrate the device if the player tries to play with the animal without a high enough food level
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         }
     }
@@ -57,14 +60,18 @@ class Pet {
     //function to feed the animal
     func feed() {
         if(foodLevel < 10){
+            //increase the food level
             foodLevel += 1
+            //make eating noise if the animal is fed
             petAudioPlayer = try? AVAudioPlayer(contentsOf: Bundle.main.url(forResource: "feed", withExtension: "mp3")!)
             petAudioPlayer?.prepareToPlay()
             petAudioPlayer?.play()
         }
     }
     
+    //function to create a pet noise
     func makeNoise(){
+        //depending on the pet, make a custom noise
         switch petType {
         case .bird:
             petAudioPlayer = try? AVAudioPlayer(contentsOf: Bundle.main.url(forResource: "bird", withExtension: "mp3")!)
@@ -79,11 +86,12 @@ class Pet {
         case .scooby:
             petAudioPlayer = try? AVAudioPlayer(contentsOf: Bundle.main.url(forResource: "scooby", withExtension: "mp3")!)
         }
-        
+        //prepare the audio player to play noise
         petAudioPlayer?.prepareToPlay()
+        //make the pet noise
         petAudioPlayer?.play()
     }
-    
+    //function to stop the pet noise
     func stopNoise(){
         petAudioPlayer?.stop()
     }
@@ -94,11 +102,7 @@ class Pet {
         self.petType = petType
         self.imageName = imageName
         self.color = color
-        foodLevel = 7
-        happinessLevel = 4
+        foodLevel = 0
+        happinessLevel = 0
     }
-    
-    
-    
-    
 }
