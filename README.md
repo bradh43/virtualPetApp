@@ -2,9 +2,9 @@
 <p>Second lab for CSE 438 Mobile App Development. Simple virtual pet app. This app was made in Xcode, using swift, and was done all programmatically.</p>
 <p>This app allows the user to have multiple pets. Each pet can be fed, and as long as it is being fed it can be played with. The purpose of this app was to practice with auto layout. This app works on all devices, and is optimized for either screen orientation.</p>
 <p>
-<img align="left" src="bunnyScreenshot.png" height="290">
-<img align="left" src="catScreenshot.png" height="290">
-<img align="right" src="birdScreenshot.png" height="290">
+<img align="left" src="bunnyScreenshot.png" height="287">
+<img align="left" src="catScreenshot.png" height="287">
+<img align="right" src="birdScreenshot.png" height="287">
 </p>
 <br>
 <p>
