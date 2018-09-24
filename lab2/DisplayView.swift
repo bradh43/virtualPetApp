@@ -8,11 +8,11 @@
 
 import UIKit
 
-/// A view for displaying a quantitative value. Set the `value` property to update the view.
-/// To animate changes, call the `animateValue` method.
+// A view for displaying a quantitative value. Set the `value` property to update the view.
+// To animate changes, call the `animateValue` method.
 class DisplayView: UIView {
     
-    /// The value to visually display. Valid range is between 0 and 1.
+    // The value to visually display. Valid range is between 0 and 1.
     public var value: CGFloat {
         get {
             return self.modelValue
@@ -23,7 +23,7 @@ class DisplayView: UIView {
         }
     }
     
-    /// The color of the display bar.
+    // The color of the display bar.
     public var color: UIColor = .black {
         didSet { self.valueView.backgroundColor = color }
     }
