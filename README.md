@@ -11,5 +11,5 @@
 <p>
 <img align="left" src="fishScreenshot.png" width="200">
 <img align="center" src="dogScreenshot.png" width="200">
-<img align="center" src="scoobyScreenshot.png" width="200">
+<img align="right" src="scoobyScreenshot.png" width="200">
 </p>
