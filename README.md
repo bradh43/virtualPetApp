@@ -1,8 +1,9 @@
 # virtualPetApp
-Lab 2 for CSE 438 Mobile App Development. 
-
 <p>
-  <img align="left" src="birdScreenshot.png" width="300">
-  <p>First lab for CSE 438 Mobile App Development. Simple shopping calculator app. This app was made in Xcode, using swift, and was done all programmatically.</p>
-<p>This app includes a hidden feature. If you click on the shopping cart image, it will use location services to get your current coordinates. It takes theses coordinates and uses the Geolocator to get the current state. The app then looks up the state and finds the average sales tax and fills out the sales tax field in the app for you.</p>
+  <img align="right" src="birdScreenshot.png" width="300">
+  <p>Second lab for CSE 438 Mobile App Development. Simple virtual pet app. This app was made in Xcode, using swift, and was done all programmatically.</p>
+<p>This app allows the user to have multiple pets. Each pet can be fed, and as long as it is being fed it can be played with. The purpose of this app was to practice with auto layout. This app works on all devices, and is optimized for either screen orientation.</p>
+<img align="right" src="bunnyScreenshot.png" width="300">
+ <p>For the creative feature I added a few things to improve the user's experience. The first feature I added was to give the user a warning with vibration when they try to play the pet without feeding it first. Along with this I also added a custom font that gives the game a little bit of a retro feel. In addition to this I also added sounds. If the user feeds or play with the pet in makes a sound effect as well as if you tap the pet image. Finally as a bonus, I added a hidden pet. If you beat the game and max out the happiness levels of all the pets it reveals another mystery pet. </p>
 </p>
+<img align="right" src="scoobyScreenshot.png" width="300">
