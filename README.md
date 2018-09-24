@@ -8,8 +8,7 @@
 </p>
 <br>
 <p>For the creative feature I added a few things to improve the user's experience. The first feature I added was to give the user a warning with vibration when they try to play the pet without feeding it first. Along with this I also added a custom font that gives the game a little bit of a retro feel. In addition to this I also added sounds. If the user feeds or play with the pet in makes a sound effect as well as if you tap the pet image. Finally as a bonus, I added a hidden pet. If you beat the game and max out the happiness levels of all the pets it reveals another mystery pet.</p>
-
-<img align="center" src="dogScreenshot.png" width="200">
 <img align="left" src="fishScreenshot.png" width="200">
+<img align="center" src="dogScreenshot.png" width="200">
 <img align="right" src="scoobyScreenshot.png" width="200">
 
